@@ -11,7 +11,7 @@ class UserStocksController < ApplicationController
     end
     @user_stock = UserStock.create(user: current_user, stock: stock)
     flash[:notice] = "Stock #{stock.name} was successfully added to your portfolio"
-    redirect_to my_list_path
+    redirect_to my_portfolio_path
   end
 
   def show
@@ -31,12 +31,12 @@ class UserStocksController < ApplicationController
     if act == "Buy"
       @user_stock.quantity += params[:user_stock][:quantity].to_i
       p = params[:user_stock][:quantity].to_f * @stock.last_price.to_f
-      @user_stock.cprice += p.to_i
+      @user_stock.cprice += p
     else
       if @user_stock.quantity >= params[:user_stock][:quantity].to_i
         @user_stock.quantity -= params[:user_stock][:quantity].to_i
         p = params[:user_stock][:quantity].to_f * @stock.last_price.to_f
-        @user_stock.cprice -= p.to_i
+        @user_stock.cprice -= p
       else
         flash[:alert] = "You cant Sell more Shares than you have"
         has_error = true
@@ -44,29 +44,11 @@ class UserStocksController < ApplicationController
     end
     @user_stock.save!
     if !has_error
-      flash[:notice] = "You #{act == "Buy" ? "Bought" : "Sold"} #{params[:user_stock][:quantity]} shares of #{@stock.name}"
+      flash[:notice] = "You #{act == "Buy" ? "Bought" : "Sold"} #{params[:user_stock][:quantity]} shares of #{@stock.name} worth $#{p}"
     end
     redirect_to my_list_path
   end
 
-
-
-    def update_less
-      @user_stock = UserStock.find(params[:id])
-      @stock = Stock.find(@user_stock.stock_id)
-      @user_stock.quantity = params[:user_stock][:quantity].to_i
-      p = params[:user_stock][:quantity].to_f * @stock.last_price.to_f
-      @user_stock.cprice = p.to_i
-      @user_stock.save!
-
-      if @user_stock.quantity == params[:user_stock][:quantity].to_i
-        flash[:notice] = "You bought #{@user_stock.quantity} shares of worth $#{@user_stock.cprice}"
-        redirect_to my_portfolio_path
-      else
-        flash.now[:alert] = "failed, is quantity = #{params[:user_stock][:quantity]}"
-        render 'user_stock/show'
-      end
-    end
 
   def destroy
     stock = Stock.find(params[:id])

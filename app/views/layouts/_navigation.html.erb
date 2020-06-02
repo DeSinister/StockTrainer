@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <%= link_to 'FinanceTracker', root_path, class: 'navbar-brand' %>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= fa_icon "area-chart"%> FinanceTracker
+      <%end%>
             <% if current_user %>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -8,13 +10,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav mr-auto">
                    <li class="nav-item">
-                     <%= link_to 'My Stocks', my_list_path, class: 'nav-link'%>
+                     <%= link_to  my_list_path, class: 'nav-link' do %>
+                       <%= fa_icon "archive"%> My Stocks
+                     <%end%>
                    </li>
                    <li class="nav-item <%= 'active' if request.path == my_portfolio_path %>">
-                       <%= link_to 'My Portfolio', my_portfolio_path, class: 'nav-link' %>
+                       <%= link_to  my_portfolio_path, class: 'nav-link' do %>
+                         <%= fa_icon "bookmark"%> My Portfolio
+                       <%end%>
                    </li>
                    <li class="nav-item <%= 'active' if request.path == my_friendlist_path %>">
-                       <%= link_to 'My Friends', my_friendlist_path, class: 'nav-link' %>
+                       <%= link_to my_friendlist_path, class: 'nav-link' do%>
+                         <%= fa_icon "address-book"%> My Friends
+                      <%end%>
                    </li>
                </ul>
                <ul class='navbar-nav ml-auto'>
@@ -28,7 +36,7 @@
                      <%end%>
 
                      <%= link_to destroy_user_session_path, class: "dropdown-item bg-red", method: :delete do%>
-                        <i class="fas fa-sign-out"></i> Log-out
+                         <%= fa_icon "sign-out"%> Log-out
                      <%end%>
 
                      </div>

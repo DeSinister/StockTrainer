@@ -19,9 +19,13 @@
             <td><%=friend.last_name%></td>
             <td><%=friend.email%></td>
             <td>
-              <%= link_to 'View', user_path(friend), class: 'btn btn-sm btn-secondary same1 mb mt' %>
+              <%= link_to user_path(friend), class: 'btn btn-sm btn-secondary same2 mb mt' do%>
+                <span><%=fa_icon("address-card")%><span class = "toggle"> Profile</span></span>
+              <%end%>
 
-              <%= link_to 'Unfollow', friendship_path(friend), method: :delete, data: {confirm: 'Are you sure.?'}, class: 'btn same1 btn-warning btn-sm mb mt' %>
+              <%= link_to friendship_path(friend), method: :delete, data: {confirm: 'Are you sure.?'}, class: 'btn same btn-danger same2 btn-sm mb mt' do%>
+                <span><%=fa_icon("user-times")%><span class = "toggle"> Unfollow</span></span>
+              <%end%>
             </td>
 
             <%r+=1%>

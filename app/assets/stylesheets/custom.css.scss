@@ -1,5 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap';
-
+@import "font-awesome";
 .search-area{
   padding-top: 50px;
 }
@@ -49,4 +49,22 @@
 }
 .same1{
   width: 80px;
+}
+.same2{
+  width:100px
+}
+.green{
+  color: green;
+}
+.red{
+  color: red;
+}
+.yellow{
+  color: yellow;
+}
+.toggle{
+  display: none
+}
+ span:hover .toggle{
+  display: inline;
 }

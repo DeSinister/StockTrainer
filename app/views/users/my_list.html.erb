@@ -10,7 +10,7 @@
           <th scope="col">Sno.</th>
           <th scope="col">Ticker</th>
           <th scope="col">Name</th>
-          <th scope="col">Last Price</th>
+          <th scope="col">Stock Price</th>
           <th scope="col">Quantity</th>
           <th scope="col">Total</th>
           <th scope="col">Actions</th>
@@ -25,7 +25,21 @@
               <td scope = "row"><%= r %></td>
               <th scope="row"><%=stock.ticker%></th>
               <td><%=stock.name%></td>
-              <td><%=stock.last_price%></td>
+              <td>
+                <%if stock.change > 0 %>
+                  <div class="green">
+                    <%=stock.last_price%> <%= fa_icon "sort-up"%> <%=stock.change%>
+                  </div>
+                <%elsif stock.change < 0%>
+                  <div class="red">
+                    <%=stock.last_price%> <%= fa_icon "sort-desc"%> <%=stock.change%>
+                  </div>
+                <%else%>
+                <div class="yellow">
+                  <%=stock.last_price%>
+                </div>
+                <%end%>
+              </td>
               <td><%=us.quantity%></td>
               <td><%=us.cprice%></td>
               <td>

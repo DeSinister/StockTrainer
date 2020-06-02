@@ -9,8 +9,10 @@
         <td><strong>Email: </strong> <%= @user.email %></td>
         <td>
           <% if current_user.not_friends_with?(@user.id) %>
-            <%= link_to 'Follow friend?', friendships_path(friend: @user),
-                          class: "btn btn-sm btn-success", method: :post %>
+            &nbsp;&nbsp;
+            <%= link_to friendships_path(friend: @user), class: "btn btn-sm btn-success", method: :post do %>
+                <%= fa_icon "user-plus"%> Make a Friend?
+            <%end%>
           <% else %>
             <span class="badge badge-secondary">
               You are friends

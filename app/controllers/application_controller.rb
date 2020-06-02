@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
 
   def update_stock(stocks)
     stocks.each do |stock|
-      stock.last_price = Stock.new_lookup(stock.ticker).last_price
+      new_price = Stock.new_lookup(stock.ticker).last_price
+      stock.change = new_price - stock.last_price
+      stock.last_price = new_price
       stock.save!
     end
   end
