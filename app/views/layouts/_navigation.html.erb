@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <%= link_to 'FinanceTracker', root_path, class: 'navbar-brand' %>
+            <% if current_user %>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto">
+                   <li class="nav-item">
+                     <%= link_to 'My Stocks', my_list_path, class: 'nav-link'%>
+                   </li>
+                   <li class="nav-item <%= 'active' if request.path == my_portfolio_path %>">
+                       <%= link_to 'My Portfolio', my_portfolio_path, class: 'nav-link' %>
+                   </li>
+                   <li class="nav-item <%= 'active' if request.path == my_friendlist_path %>">
+                       <%= link_to 'My Friends', my_friendlist_path, class: 'nav-link' %>
+                   </li>
+               </ul>
+               <ul class='navbar-nav ml-auto'>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <%= fa_icon "user"%> <%= current_user.full_name%>
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
+                        <%=fa_icon 'edit'%> Edit Profile
+                     <%end%>
+
+                     <%= link_to destroy_user_session_path, class: "dropdown-item bg-red", method: :delete do%>
+                        <i class="fas fa-sign-out"></i> Log-out
+                     <%end%>
+
+                     </div>
+                  </li>
+
+               </ul>
+               <form class="form-inline my-2 my-lg-0">
+                   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%=fa_icon 'search'%></button>
+               </form>
+           </div>
+       <% end %>
+   </div>
+</nav>
+<div class="pb"></div>

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-9 col-10 col-9-md col-10-xs">
+    <table class="table table-striped table-dark table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Sno.</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% r = 1 %>
+        <% @added_friends.each do |friend| %>
+          <tr>
+            <td scope = "row"><%= r %></td>
+            <th scope="row"><%=friend.first_name%></th>
+            <td><%=friend.last_name%></td>
+            <td><%=friend.email%></td>
+            <td>
+              <%= link_to 'View', user_path(friend), class: 'btn btn-sm btn-secondary same1 mb mt' %>
+
+              <%= link_to 'Unfollow', friendship_path(friend), method: :delete, data: {confirm: 'Are you sure.?'}, class: 'btn same1 btn-warning btn-sm mb mt' %>
+            </td>
+
+            <%r+=1%>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

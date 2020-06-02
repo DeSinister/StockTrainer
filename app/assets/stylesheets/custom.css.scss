@@ -1,0 +1,52 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.search-area{
+  padding-top: 50px;
+}
+.nopad{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.pb{
+  padding-bottom: 35px;
+}
+.results-block{
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.logout-button{
+  margin-right: 5px;
+}
+.user-name{
+  margin-top: 3.5%;
+  padding-right: 10px;
+}
+.mt{
+  margin-top: 2.5%
+}
+.mb{
+  margin-bottom: 2.5%
+}
+.ml{
+  margin-left: 0.75%
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.pr{
+  padding-left: 74px;
+}
+.navbar{
+  background-color: #dfe7f5
+}
+.bg-red{
+  background-color: #bf2413;
+  color: white;
+}
+.same{
+  width: 60px;
+}
+.same1{
+  width: 80px;
+}
