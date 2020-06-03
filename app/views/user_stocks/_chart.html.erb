@@ -6,20 +6,29 @@
 function drawChart() {
 
   var data = new google.visualization.DataTable();
-  data.addColumn('number', 'Day')
-  data.addColumn('number', 'High');
-  data.addColumn('number', 'Low');
-  data.addColumn('number', 'Open');
+  var arr = <%=sliced%>;
+  var temp = new Date();
+  var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 
-  data.addRows(<%=sliced%>);
+  for(var i=0;i<arr.length;i++)
+  {
+  	temp.setDate(temp.getDate()-1);
+    arr[arr.length - i -1][0]= temp.getDate() + " " + month[temp.getMonth()-1];
+  }
+  data.addColumn('string', 'Day');
+  data.addColumn('number', 'High');
+  data.addColumn('number', 'Open');
+  data.addColumn('number', 'Low');
+
+  data.addRows(arr);
 
   var options = {
     chart: {
       title: 'Stock Tracking',
       subtitle: 'in dollars (USD)'
     },
-    width: 500,
-    height: 300,
+    width: screen.width * 0.55,
+    height: screen.height * 0.45,
     axes: {
       x: {
         0: {side: 'top'}
