@@ -1,6 +1,20 @@
+
 <h1><%=@act%> Shares</h1>
 <hr>
 <h3><%=@act%>ing <%=@stock.name%> </h3>
+<%chart = Stock.make_chart(@stock.ticker)%>
+
+<%sliced = []%>
+<% h = 0 %>
+<%chart.each do |c|%>
+  <% h+=1%>
+  <%sliced << [h, c["high"], c["low"], c["open"]]%>
+<%end%>
+
+
+
+<%=render 'chart', sliced: sliced%>
+<br>
 
 
 <%# <%= form_for( user_stock_path(@user_stock), method: :put, :html => {class: "form-horizontal", role: "form"}) do |f| %>

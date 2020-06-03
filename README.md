@@ -2,5 +2,7 @@ things to do in future:
 
 
 1.) profit and invested money calculated
-2.) appropiate color for stock green..if price incremented and red if decreamented
-3.) User Balance
+2.) User Balance
+3.) Display All Stocks
+4.) Add category to Stocks
+5.) COnstraint for buying stocks of same category

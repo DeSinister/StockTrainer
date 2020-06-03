@@ -41,4 +41,8 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore application configuration
+
+/config/secret.yml
+
+# Ignore application configuration
 /config/application.yml

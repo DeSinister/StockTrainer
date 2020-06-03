@@ -8,12 +8,25 @@ class Stock < ApplicationRecord
 
   def self.new_lookup(ticker_symbol)
     client = IEX::Api::Client.new(
-      publishable_token: ENV["STOCK_PUBLISHABLE_TOKEN"],
-      secret_token: ENV["STOCK_SECRET_TOKEN"],
+      publishable_token: ENV["PUBLISHABLE"],
+      secret_token: ENV["SECRET"],
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
     begin
       new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
+    rescue => exception
+      return nil
+    end
+  end
+
+  def self.make_chart(ticker_symbol)
+    client = IEX::Api::Client.new(
+      publishable_token: ENV["PUBLISHABLE"],
+      secret_token: ENV["SECRET"],
+      endpoint: 'https://sandbox.iexapis.com/v1'
+    )
+    begin
+      client.chart(ticker_symbol)
     rescue => exception
       return nil
     end
