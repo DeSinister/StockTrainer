@@ -13,12 +13,13 @@ function drawChart() {
   for(var i=0;i<arr.length;i++)
   {
   	temp.setDate(temp.getDate()-1);
-    arr[arr.length - i -1][0]= temp.getDate() + " " + month[temp.getMonth()-1];
+    arr[arr.length - i -1][0]= temp.getDate() + " " + month[temp.getMonth()];
   }
   data.addColumn('string', 'Day');
   data.addColumn('number', 'High');
-  data.addColumn('number', 'Open');
   data.addColumn('number', 'Low');
+  data.addColumn('number', 'Open');
+  data.addColumn('number', 'Close')
 
   data.addRows(arr);
 

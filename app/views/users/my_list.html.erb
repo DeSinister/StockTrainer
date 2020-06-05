@@ -18,6 +18,7 @@
       </thead>
       <tbody>
         <% r = 1 %>
+        <% investment = 0%>
         <% @tracked_stocks.each do |stock| %>
           <% us = UserStock.where(user: @user, stock: stock).first%>
           <%if us.quantity > 0 %>
@@ -41,6 +42,7 @@
                 <%end%>
               </td>
               <td><%=us.quantity%></td>
+              <%investment += us.cprice%>
               <td><%=us.cprice%></td>
               <td>
                 <%= link_to 'Buy', user_stock_path(stock, act: "Buy"), class: 'btn btn-sm same btn-light mb mt'%>&nbsp;
@@ -50,8 +52,10 @@
           <%end%>
       <% end %>
       </tbody>
-
     </table>
+    <hr>
+
+    <strong>Total Investment: <%=investment%> $</strong>
 
   </div>
 </div>

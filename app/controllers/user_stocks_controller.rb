@@ -27,24 +27,30 @@ class UserStocksController < ApplicationController
     act = params[:act]
     @user_stock = UserStock.find(params[:id])
     @stock = Stock.find(@user_stock.stock_id)
-
-    if act == "Buy"
-      @user_stock.quantity += params[:user_stock][:quantity].to_i
       p = params[:user_stock][:quantity].to_f * @stock.last_price.to_f
-      @user_stock.cprice += p
+    if act == "Buy"
+      if current_user.balance > p
+        @user_stock.quantity += params[:user_stock][:quantity].to_i
+        @user_stock.cprice += p
+        current_user.balance -= p
+      else
+        flash[:alert] = "You dont have enough balance"
+        has_error = true
+      end
     else
       if @user_stock.quantity >= params[:user_stock][:quantity].to_i
         @user_stock.quantity -= params[:user_stock][:quantity].to_i
-        p = params[:user_stock][:quantity].to_f * @stock.last_price.to_f
         @user_stock.cprice -= p
+        current_user.balance += p
       else
         flash[:alert] = "You cant Sell more Shares than you have"
         has_error = true
       end
     end
     @user_stock.save!
+    current_user.save!
     if !has_error
-      flash[:notice] = "You #{act == "Buy" ? "Bought" : "Sold"} #{params[:user_stock][:quantity]} shares of #{@stock.name} worth $#{p}"
+      flash[:notice] = "You #{act == "Buy" ? "Bought" : "Sold"} #{params[:user_stock][:quantity]} shares of #{@stock.name} worth $#{p}, Your Current Balance is #{current_user.balance} $"
     end
     redirect_to my_list_path
   end
