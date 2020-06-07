@@ -21,8 +21,8 @@ class Stock < ApplicationRecord
 
   def self.make_chart(ticker_symbol)
     client = IEX::Api::Client.new(
-      publishable_token: ENV["PUBLISHABLE"],
-      secret_token: ENV["SECRET"],
+      publishable_token: "Tpk_826ceb1c02c24265b0ed1f6627db60d0",
+      secret_token: "Tsk_e8dfbdda8bde4cff8396f5fb2c8ae826",
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
     begin
