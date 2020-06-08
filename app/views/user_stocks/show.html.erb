@@ -21,29 +21,30 @@
 
 <%sliced = []%>
 <%temp = []%>
+
 <%t2 = 0%>
 
 <%chart.each do |c|%>
   <%#temp =   [999999999999, c["u_high"], c["u_low"], c["u_open"]].sort%>
-  <%temp =   [c["u_high"], c["u_low"], c["u_open"], c["u_close"]]%>
-  <%if temp[0] != temp.max%>
+  <%temp =   [c["u_open"], c["u_high"], c["u_low"], c["u_close"]]%>
+  <%if temp[1] != temp.max%>
     <%t2 = temp.find_index(temp.max)%>
-    <%temp[0], temp[t2] = temp[t2], temp[0]%>
-  <%end%>
-  <%if temp[1] != temp.min%>
-    <%t2 = temp.find_index(temp.min)%>
     <%temp[1], temp[t2] = temp[t2], temp[1]%>
   <%end%>
-  <%temp.unshift(999999999999)%>
+  <%if temp[2] != temp.min%>
+    <%t2 = temp.find_index(temp.min)%>
+    <%temp[2], temp[t2] = temp[t2], temp[2]%>
+  <%end%>
   <%#temp = temp.reverse()%>
   <%sliced << temp%>
 <%end%>
 
 
+
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-9 col-sm-6">
-      <%=render 'chart', sliced: sliced%>
+        <div id="chartContainer" style="width: 600px; height: 400px;"><%=render 'chart', sliced: sliced%></div>
     </div>
   </div>
 </div>

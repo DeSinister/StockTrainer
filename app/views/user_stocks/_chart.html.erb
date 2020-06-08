@@ -1,47 +1,58 @@
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script type="text/javascript">
-  google.charts.load('current', {'packages':['line']});
-  google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-
-  var data = new google.visualization.DataTable();
+window.onload = function () {
   var arr = <%=sliced%>;
+  var prev = new Date();
   var temp = new Date();
   var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-
+  var date = []
   for(var i=0;i<arr.length;i++)
   {
-  	temp.setDate(temp.getDate()-1);
-    arr[arr.length - i -1][0]= temp.getDate() + " " + month[temp.getMonth()];
+    date[arr.length - i- 1] = new Date();
+    date[arr.length - i -1].setDate(temp.getDate() - 1 -i);
   }
-  data.addColumn('string', 'Day');
-  data.addColumn('number', 'High');
-  data.addColumn('number', 'Low');
-  data.addColumn('number', 'Open');
-  data.addColumn('number', 'Close')
+  console.log(date)
 
-  data.addRows(arr);
+  var h = {}
+  // {x: new Date(2012,01,01),y:[5198, 5629, 5159, 5385]}
+  var final = []
+  h["x"] = 0
+  h["y"] = 0
+  for(var i=0;i<arr.length;i++){
+    h = {x: date[i], y: arr[i]}
+    final[i] = h
+  }
 
-  var options = {
-    chart: {
-      title: 'Stock Tracking',
-      subtitle: 'in dollars (USD)'
-    },
-    width: screen.width * 0.55,
-    height: screen.height * 0.45,
-    axes: {
-      x: {
-        0: {side: 'top'}
-      }
-    }
-  };
+	var chart = new CanvasJS.Chart("chartContainer",
+	{
+		title:{
+			text: "Stock Chart",
+			fontFamily: "times new roman"
+		},
+		zoomEnabled: true,
+		exportEnabled: true,
+		axisY: {
+			includeZero:false,
+			title: "Prices",
+			prefix: "$ "
+		},
+		axisX: {
+			interval:2,
+			intervalType: "month",
+			valueFormatString: "MMM-YY",
+			labelAngle: -45
+		},
+		data: [
+		{
+			type: "candlestick",
+			risingColor: "green",
+			color: "red",
+			dataPoints: final
+		}
+		]
+	});
 
-  var chart = new google.charts.Line(document.getElementById('line_top_x'));
-
-  chart.draw(data, google.charts.Line.convertOptions(options));
+	chart.render();
 }
 </script>
-
-
-<div id="line_top_x"></div>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
