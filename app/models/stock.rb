@@ -8,7 +8,7 @@ class Stock < ApplicationRecord
 
   def self.new_lookup(ticker_symbol)
     client = IEX::Api::Client.new(
-      publishable_token: ENV["PUBLISHABLE"],
+      publishable_token: "Tpk_826ceb1c02c24265b0ed1f6627db60d0",
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
     begin
