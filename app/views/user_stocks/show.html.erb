@@ -18,35 +18,9 @@
 </div>
 
 
-<%sliced = []%>
-<%temp = []%>
-
-<%t2 = 0%>
-
-<%chart.each do |c|%>
-  <%#temp =   [999999999999, c["u_high"], c["u_low"], c["u_open"]].sort%>
-  <%temp =   [c["u_open"], c["u_high"], c["u_low"], c["u_close"]]%>
-  <%if temp[1] != temp.max%>
-    <%t2 = temp.find_index(temp.max)%>
-    <%temp[1], temp[t2] = temp[t2], temp[1]%>
-  <%end%>
-  <%if temp[2] != temp.min%>
-    <%t2 = temp.find_index(temp.min)%>
-    <%temp[2], temp[t2] = temp[t2], temp[2]%>
-  <%end%>
-  <%#temp = temp.reverse()%>
-  <%sliced << temp%>
-<%end%>
 
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-9 col-sm-6">
-        <div id="chartContainer" style="width: 600px; height: 400px;"><%=render 'chart', sliced: sliced%></div>
-    </div>
-  </div>
-</div>
 <br>
 <%g = @time%>
 <button onClick="window.location.reload();">Refresh Page</button>
