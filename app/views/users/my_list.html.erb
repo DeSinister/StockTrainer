@@ -45,8 +45,8 @@
               <%investment += us.cprice%>
               <td><%=us.cprice%></td>
               <td>
-                <%= link_to 'Buy', user_stock_path(stock, act: "Buy"), class: 'btn btn-sm same btn-light mb mt'%>&nbsp;
-                <%= link_to 'Sell', user_stock_path(stock, act: "Sell"), class: 'btn btn-sm same btn-secondary mt mb'%>
+                <%= link_to 'Buy', user_stock_path(stock, act: "Buy", time: "month"), class: 'btn btn-sm same btn-light mb mt'%>&nbsp;
+                <%= link_to 'Sell', user_stock_path(stock, act: "Sell", time: "month"), class: 'btn btn-sm same btn-secondary mt mb'%>
               </td>
             </tr>
           <%end%>

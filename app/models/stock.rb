@@ -9,7 +9,6 @@ class Stock < ApplicationRecord
   def self.new_lookup(ticker_symbol)
     client = IEX::Api::Client.new(
       publishable_token: ENV["PUBLISHABLE"],
-      secret_token: ENV["SECRET"],
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
     begin
@@ -22,11 +21,34 @@ class Stock < ApplicationRecord
   def self.make_chart(ticker_symbol)
     client = IEX::Api::Client.new(
       publishable_token: ENV["PUBLISHABLE"],
-      secret_token: ENV["SECRET"],
       endpoint: 'https://sandbox.iexapis.com/v1'
     )
     begin
-      client.chart(ticker_symbol)
+        client.chart(ticker_symbol, '1m')
+    rescue => exception
+      return nil
+    end
+  end
+
+  def self.make_year_chart(ticker_symbol)
+    client = IEX::Api::Client.new(
+      publishable_token: ENV["PUBLISHABLE"],
+      endpoint: 'https://sandbox.iexapis.com/v1'
+    )
+    begin
+        client.chart(ticker_symbol, '1y', chart_interval: 2)
+    rescue => exception
+      return nil
+    end
+  end
+
+  def self.make_day_chart(ticker_symbol)
+    client = IEX::Api::Client.new(
+      publishable_token: ENV["PUBLISHABLE"],
+      endpoint: 'https://sandbox.iexapis.com/v1'
+    )
+    begin
+        client.chart(ticker_symbol, '1d', chart_interval: 8)
     rescue => exception
       return nil
     end

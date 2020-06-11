@@ -48,9 +48,9 @@
                 </span>
               <% end %>
               <%us = UserStock.where(user: current_user, stock: stock).first%>
-              <%= link_to 'Buy', user_stock_path(stock, act: "Buy"), class: 'btn same1 btn-sm btn-light mb mt'%>
+              <%= link_to 'Buy', user_stock_path(stock, act: "Buy", time: "month"), class: 'btn same1 btn-sm btn-light mb mt'%>
               <%if us.quantity > 0%>
-                <%= link_to 'Sell', user_stock_path(stock, act: "Sell"), class: 'btn same1 btn-sm btn-secondary mt mb'%>
+                <%= link_to 'Sell', user_stock_path(stock, act: "Sell", time: "month"), class: 'btn same1 btn-sm btn-secondary mt mb'%>
               <%end%>
               <% if current_user.id == @user.id %>
                 <% us = UserStock.where(user: @user, stock: stock).first%>

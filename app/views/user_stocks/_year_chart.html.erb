@@ -1,0 +1,84 @@
+<script type="text/javascript">
+  <%sliced = []%>
+  <%temp = []%>
+  <%t2 = 0%>
+  <%chart = Stock.make_year_chart(stock.ticker)%>
+  <%chart.each do |c|%>
+    <%temp =   [c["u_open"], c["u_high"], c["u_low"], c["u_close"]]%>
+    <%if temp[1] != temp.max%>
+      <%t2 = temp.find_index(temp.max)%>
+      <%temp[1], temp[t2] = temp[t2], temp[1]%>
+    <%end%>
+    <%if temp[2] != temp.min%>
+      <%t2 = temp.find_index(temp.min)%>
+      <%temp[2], temp[t2] = temp[t2], temp[2]%>
+    <%end%>
+    <%sliced << temp%>
+  <%end%>
+
+  window.onload = function () {
+    var arr = <%=sliced%>;
+    var prev = new Date();
+    var temp = new Date();
+    var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+    var date = []
+    for(var i=0;i<arr.length;i++)
+    {
+      date[arr.length - i- 1] = new Date();
+      date[arr.length - i -1].setDate(temp.getDate() - 1 -i);
+    }
+
+
+    var h = {}
+    // {x: new Date(2012,01,01),y:[5198, 5629, 5159, 5385]}
+    var final = []
+    h["x"] = 0
+    h["y"] = 0
+    for(var i=0;i<arr.length;i++){
+      h = {x: date[i], y: arr[i]}
+      final[i] = h
+    }
+
+
+  	var chart = new CanvasJS.Chart("year",
+  	{
+  		title:{
+  			text: "Yearly Stock Chart",
+  			fontFamily: "times new roman"
+  		},
+  		zoomEnabled: true,
+  		exportEnabled: true,
+  		axisY: {
+  			includeZero:false,
+  			title: "Prices",
+  			prefix: "$ "
+  		},
+  		axisX: {
+  			interval:1,
+  			intervalType: "month",
+  			valueFormatString: "MMM-YY",
+  			labelAngle: -45
+  		},
+  		data: [
+  		{
+  			type: "candlestick",
+  			risingColor: "green",
+  			color: "red",
+  			dataPoints: final
+  		}
+  		]
+  	});
+
+  	chart.render();
+  }
+  </script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-9 col-sm-6"
+            <div id="year" style="height: 500px; width: 700px;"></div>
+        </div>
+      </div>
+    </div>

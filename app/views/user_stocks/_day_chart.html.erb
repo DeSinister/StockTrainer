@@ -1,0 +1,96 @@
+
+<script type="text/javascript">
+
+
+  <%chart = Stock.make_day_chart(stock.ticker)%>
+  <%sliced = []%>
+  <%temp = []%>
+  <%temp2 = []%>
+  <%date1 = []%>
+  <%t2 = 0%>
+  <%count = 0%>
+
+  <%chart.each do |c|%>
+    <%temp =   [c["open"], c["high"], c["low"], c["close"]]%>
+    <%for i in 0..3%>
+      <%if temp[i] === nil%>
+        <%temp[i] = [chart[count-1]["open"], chart[count-1]["high"], chart[count-1]["low"], chart[count-1]["close"]] %>
+      <%end%>
+    <%end%>
+    <%if temp[0].kind_of?(Array)%>
+      <%temp = temp[0]%>
+    <%end%>
+    <%if temp[1] != temp.max%>
+      <%t2 = temp.find_index(temp.max)%>
+      <%temp[1], temp[t2] = temp[t2], temp[1]%>
+    <%end%>
+    <%if temp[2] != temp.min%>
+      <%t2 = temp.find_index(temp.min)%>
+      <%temp[2], temp[t2] = temp[t2], temp[2]%>
+    <%end%>
+
+    <%sliced << temp%>
+
+    <%temp2 = [c["minute"][0, 2].to_i, c["minute"][3, 4].to_i]%>
+
+    <%date1 << temp2%>
+    <%count += 1%>
+  <%end%>
+
+  var arr = <%=sliced%>;
+  var dat = <%=date1%>
+  for(var i=0;i<arr.length;i++){
+
+    dat[i][0] = dat[i][0] + ":" + dat[i][1];
+    if(dat[i][1] < 10 ){
+      dat[i][0] =  dat[i][0].slice(0, 3) + "0" + dat[i][1]
+    }
+    if(dat[i][1] === 0){
+        dat[i][0] += '0'
+    }
+
+  }
+  var h = {}
+
+  var final = []
+  h["label"] = 0
+  h["y"] = 0
+  for(var i=0;i<arr.length;i++){
+    h = {label: dat[i][0], y: arr[i]}
+    final[i] = h
+  }
+  window.onload = function () {
+  	var chart = new CanvasJS.Chart("chartContainer",
+  	{
+  		title:{
+  			text: "Intraday Stock Chart",
+  			fontFamily: "times new roman"
+  		},
+  		zoomEnabled: true,
+  		exportEnabled: true,
+  		axisY: {
+  			includeZero:false,
+  			title: "Prices",
+  			prefix: "$ "
+  		},
+  		axisX: {
+  			interval:5,
+  			labelAngle: -45
+  		},
+  		data: [
+  		{
+  			type: "candlestick",
+  			risingColor: "green",
+  			color: "red",
+  			dataPoints: final
+  		}
+  		]
+  	});
+  	chart.render();
+  }  
+  </script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+        <div id="chartContainer" style="height: 500px; width: 800px;">
+      </div>

@@ -1,8 +1,6 @@
-
 <h1><%=@act%> Shares</h1>
 <hr>
 <h2 class = "ml">  <%=@stock.name%> </h2>
-<%chart = Stock.make_chart(@stock.ticker)%>
 <div class="row">
   <div class="col-7">
     <h5 class = "ml">  Price : <%=@stock.last_price%></h5>
@@ -18,57 +16,53 @@
     <%end%>
   </div>
 </div>
-
-<%sliced = []%>
-<%temp = []%>
-<%t2 = 0%>
-
-<%chart.each do |c|%>
-  <%#temp =   [999999999999, c["u_high"], c["u_low"], c["u_open"]].sort%>
-  <%temp =   [c["u_high"], c["u_low"], c["u_open"], c["u_close"]]%>
-  <%if temp[0] != temp.max%>
-    <%t2 = temp.find_index(temp.max)%>
-    <%temp[0], temp[t2] = temp[t2], temp[0]%>
-  <%end%>
-  <%if temp[1] != temp.min%>
-    <%t2 = temp.find_index(temp.min)%>
-    <%temp[1], temp[t2] = temp[t2], temp[1]%>
-  <%end%>
-  <%temp.unshift(999999999999)%>
-  <%#temp = temp.reverse()%>
-  <%sliced << temp%>
+<br>
+<%g = @time%>
+<button onClick="window.location.reload();">Refresh Page</button>
+<%if g === "month"%>
+<div id="m">
+  <div id="month1"><%=render 'month_chart', stock: @stock%></div>
+  <%= link_to "1d", user_stock_path(@stock, act: "#{@act}", time: "day"), class: 'btn same1 btn-sm btn-dark mb mt'%>
+  <%= link_to "1m", user_stock_path(@stock, act: "#{@act}", time: "month"), class: 'btn same1 btn-sm btn-dark mb mt disabled'%>
+  <%= link_to "1y", user_stock_path(@stock, act: "#{@act}", time: "year"), class: 'btn same1 btn-sm btn-dark mb mt'%>
+</div>
+<%elsif g === "day"%>
+<div id="d2">
+  <div id="day1"><%=render 'day_chart', stock: @stock%></div>
+  <%= link_to "1d", user_stock_path(@stock, act: "#{@act}", time: "day"), class: 'btn same1 btn-sm btn-dark mb mt disabled'%>
+  <%= link_to "1m", user_stock_path(@stock, act: "#{@act}", time: "month"), class: 'btn same1 btn-sm btn-dark mb mt'%>
+  <%= link_to "1y", user_stock_path(@stock, act: "#{@act}", time: "year"), class: 'btn same1 btn-sm btn-dark mb mt'%>
+</div>
+<%else%>
+<div id="y">
+  <div id="year1" ><%=render 'year_chart', stock: @stock%></div>
+  <%= link_to "1d", user_stock_path(@stock, act: "#{@act}", time: "day"), class: 'btn same1 btn-sm btn-dark mb mt'%>
+  <%= link_to "1m", user_stock_path(@stock, act: "#{@act}", time: "month"), class: 'btn same1 btn-sm btn-dark mb mt'%>
+  <%= link_to "1y", user_stock_path(@stock, act: "#{@act}", time: "year"), class: 'btn same1 btn-sm btn-dark mb mt disabled'%>
+</div>
 <%end%>
-
+<br>
 
 <div class="container">
-  <div class="row">
-    <div class="col-12 col-md-9 col-sm-6">
-      <%=render 'chart', sliced: sliced%>
+  <%= form_for @user_stock do |f| %>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <strong><%= f.label :quantity %> :</strong>
+        <%= f.text_field :quantity, autofocus: true, class: 'form-control'%>
+      </div>
     </div>
-  </div>
-</div>
-<br>
-<br>
-
-<%# <%= form_for( user_stock_path(@user_stock), method: :put, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-<%= form_for @user_stock do |f| %>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <strong><%= f.label :quantity %> :</strong>
-      <%= f.text_field :quantity, autofocus: true, class: 'form-control'%>
-    </div>
-  </div>
 
 
-  <%if @act == "Sell"%>
-    <div class="form-group">
-      <%= f.submit 'Sell',  class: 'btn btn-primary' %>
-      <%= hidden_field_tag :act, "Sell" %>
-    </div>
-  <%else%>
-    <div class="form-group">
-      <%= f.submit 'Buy',  class: 'btn btn-primary btn-lg' %>
-      <%= hidden_field_tag :act, "Buy" %>
-    </div>
+    <%if @act == "Sell"%>
+      <div class="form-group">
+        <%= f.submit 'Sell',  class: 'btn btn-primary' %>
+        <%= hidden_field_tag :act, "Sell" %>
+      </div>
+    <%else%>
+      <div class="form-group">
+        <%= f.submit 'Buy',  class: 'btn btn-primary btn-lg' %>
+        <%= hidden_field_tag :act, "Buy" %>
+      </div>
+    <%end%>
   <%end%>
-<%end%>
+</div>

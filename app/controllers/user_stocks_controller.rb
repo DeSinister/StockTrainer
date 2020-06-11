@@ -18,6 +18,7 @@ class UserStocksController < ApplicationController
     @stock = Stock.find(params[:id])
     @user_stock = UserStock.where(user: current_user, stock_id: @stock.id).first
     @act = params[:act]
+    @time = params[:time]
     render 'user_stocks/show'
   end
 
