@@ -4,6 +4,8 @@
     <title>Stocktrainer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,13 +15,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
   </head>
 
   <body>
     <%= render 'layouts/navigation' %>
-    <div class = "container">
+    <%unless @skip_div%>
+      <div class = "container">
+    <%end%>
       <%= render 'layouts/message' %>
       <%= yield %>
-    </div>
+    <%unless @skip_div%>
+      </div>
+    <%end%>
   </body>
 </html>

@@ -24,8 +24,17 @@
 .mt{
   margin-top: 2.5%
 }
+.mth{
+  margin-top: 100px;
+}
+.mbh{
+  margin-bottom: 100px;
+}
 .mb{
   margin-bottom: 2.5%
+}
+.mr{
+  margin-right: 0.75%
 }
 .ml{
   margin-left: 0.75%
@@ -38,7 +47,12 @@
   padding-left: 74px;
 }
 .navbar{
-  background-color: #dfe7f5
+  background-color: #dfdfdf;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .bg-red{
   background-color: #bf2413;
@@ -56,6 +70,9 @@
 .green{
   color: green;
 }
+.white{
+  color: white;
+}
 .red{
   color: red;
 }
@@ -68,6 +85,390 @@
  span:hover .toggle{
   display: inline;
 }
-#d{
-  display: none;
+.pg1{
+ background:linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)), url("https://blogs.nvidia.com/wp-content/uploads/2017/10/stock-market-chart.jpg");
+}
+.pg2{
+  background: #ffffff;
+}
+.pg3{
+  background: #f1f2f3
+}
+.heading{
+  font-size: 4rem;
+  letter-spacing: -3px;
+  font-weight: 2400;
+}
+.full-width{
+  width: 100%;
+  height: 800px;
+
+}
+.half-width{
+  width: 100%;
+}
+.my-width{
+  width: 100%;
+  height: 600px;
+}
+.semi-width{
+  width: 100%;
+
+}
+.thin{
+  font-weight: 100;
+}
+.body{
+  font-family: "Nunito", sans-serif !important;
+}
+.vcenter{
+  text-align: center;
+  padding: 290px;
+}
+.v2center{
+  text-align: center;
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-top: 100px;
+  //padding-bottom: 10px;
+}
+.v3center{
+  text-align: center;
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-top: 150px;
+  //padding-bottom:340px;
+}
+.black-bg{
+  background: #000000;
+  text-decoration: none;
+  padding: 10px;
+  border: none;
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: white;
+  transition: 0.4s
+}
+.black-bg:hover{
+  background: #ffffff;
+  text-decoration: none;
+  border: 2px solid black;
+  color: #000000;
+}
+.blurb h2 {
+   color: #343434;
+   font-weight: 1300;
+   font-size: 3.5rem;
+}
+.blurb p {
+    color: #434343;
+    font-weight: 100;
+    font-size: 2.5rem;
+    line-height: 2;
+}
+.bw{
+   filter: grayscale(100%);
+}
+.card{
+  margin-top: 20px;
+}
+.parallax {
+  /* The image used */
+  background-image: url('https://img.etimg.com/thumb/width-640,height-480,imgsize-197916,resizemode-1,msid-76334845/stock-market-update-2-stocks-hit-52-week-lows-on-nse.jpg');
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax1 {
+  /* The image used */
+  background-image: linear-gradient(rgba(255,255,255,0.74), rgba(255,255,255,0.74)), url("https://blogs.nvidia.com/wp-content/uploads/2017/10/stock-market-chart.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax2 {
+  /* The image used */
+  background-image: url("http://themegrids.com/themes/brax/theme/full-screen-image/img/testimonials-bg.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.col-center {
+	margin: 0 auto;
+	float: none !important;
+}
+.carousel {
+	margin: 50px auto;
+	padding: 0 70px;
+}
+.carousel .item {
+	color: #999;
+	font-size: 14px;
+    text-align: center;
+	overflow: hidden;
+    min-height: 290px;
+}
+.carousel .item .img-box {
+	width: 135px;
+	height: 135px;
+	margin: 0 auto;
+	padding: 5px;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+}
+.carousel .img-box img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	border-radius: 50%;
+}
+.carousel .testimonial {
+	padding: 30px 0 10px;
+}
+.carousel .overview {
+	font-style: italic;
+}
+.carousel .overview b {
+	text-transform: uppercase;
+	color: #7AA641;
+}
+.carousel .carousel-control {
+	width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    top: 50%;
+	background: none;
+}
+.carousel-control i {
+    font-size: 68px;
+	line-height: 42px;
+    position: absolute;
+    display: inline-block;
+	color: rgba(0, 0, 0, 0.8);
+    text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
+}
+.carousel .carousel-indicators {
+	bottom: -40px;
+}
+.carousel-indicators li, .carousel-indicators li.active {
+	width: 10px;
+	height: 10px;
+	margin: 1px 3px;
+	border-radius: 50%;
+}
+.carousel-indicators li {
+	background: #999;
+	border-color: transparent;
+	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
+}
+.carousel-indicators li.active {
+	background: #555;
+	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
+}
+h2 {
+	color: #333;
+  font-size: 4rem;
+  font-weight: 1400;
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+//	margin: 30px 0 60px;
+}
+h2::after {
+	content: "";
+	width: 100px;
+	position: absolute;
+	margin: 0 auto;
+	height: 3px;
+	background: #8fbc54;
+	left: 0;
+	right: 0;
+	bottom: -10px;
+}
+.black{
+  background: #000000;
+  padding: 10px;
+  border: none;
+  font-weight: 300;
+  height: 200px;
+  font-size: 1.6rem;
+  color: white;
+  transition: 0.4s
+}
+.coffee{
+  background: #3b2f2f;
+  color: white;
+}
+.footer {
+  height: 100px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.black-card{
+  background: #000000;
+  text-decoration: none;
+  border: none;
+  color: white;
+  transition: 0.4s
+}
+#contact {
+    background: #333;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 2rem;
+    border-bottom: 4px dashed #fff;
+}
+
+#contact .container {
+    margin: 2rem auto;
+}
+
+#contact-form {
+    position: relative;
+}
+
+#contact button {
+    margin-top: 1rem;
+}
+
+#ajaxLoad {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+}
+
+#contact p {
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+#contact .contact-form {
+    padding: 0 0 30px 0;
+}
+
+#contact .section-header {
+    padding-bottom: 0;
+}
+
+#contact .form-control::-webkit-input-placeholder {
+    color: #c0c0c0;
+    font-weight: 200;
+}
+
+#contact .form-control:-moz-placeholder {
+    color: #c0c0c0;
+    font-weight: 200;
+}
+
+#contact .form-control::-moz-placeholder {
+    color: #c0c0c0;
+    font-weight: 200;
+}
+
+#contact .form-control:-ms-input-placeholder {
+    color: #c0c0c0;
+    font-weight: 200;
+}
+
+#contact .section-header p {
+    color: #f0f0f0;
+    letter-spacing: 0.5px;
+}
+
+#contact input, #contact textarea {
+    margin: 26px 0;
+    border-radius: 0;
+}
+#contact input, #contact textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
+    transition: all .3s;
+	border: 2px solid #333;
+    border-bottom: 2px solid #bbb;
+    color: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#contact input:focus, #contact textarea:focus {
+    border: 2px solid #fff;
+}
+
+#contact textarea {
+    height: 184px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .footer .col-12 p {
+        text-align: center;
+    }
+
+    .footer .col-12 .pull-right {
+        text-align: center;
+        float: none !important;
+    }
+}
+
+.footer {
+    color: #fff;
+    background: #111;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+main{
+ position: relative;
+ z-index: 2;
+ margin-bottom: 450px;
+}
+.down{
+  padding-top: 19.5rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 550px;
+}
+
+.footer .fa, .footer .fa:visited, .footer .fa:active, .footer .fa:focus {
+    color: #fff;
+    margin: auto 5px;
+}
+
+.footer .fa:hover {
+    color: #eee;
+}
+#sec1{
+  background: white;
+}
+.big{
+  font-size: 1.25rem;
 }

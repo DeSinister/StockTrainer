@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNavbar">
     <div class="container">
       <%= link_to root_path, class: 'navbar-brand' do %>
         <%= fa_icon "area-chart"%> StockTrainer
@@ -41,9 +41,20 @@
                      </div>
                   </li>
                </ul>
-                <div class = "nav-item ml"> <strong> Balance: <%=current_user.balance%> $</strong></div>
+                <div class = "nav-item ml thin"> <strong> Balance: <%=current_user.balance%> $</strong></div>
            </div>
        <% end %>
    </div>
 </nav>
+<%unless @skip_div%>
 <div class="pb"></div>
+<%end%>
+
+<script>
+       $(function () {
+           $(document).scroll(function () {
+               var $nav = $("#mainNavbar");
+               $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+           });
+       });
+   </script>
