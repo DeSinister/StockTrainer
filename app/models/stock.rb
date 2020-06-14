@@ -1,4 +1,5 @@
 class Stock < ApplicationRecord
+  # before_save :downcasing
   has_many :user_stocks
   has_many :users, through: :user_stocks
 
@@ -55,6 +56,11 @@ class Stock < ApplicationRecord
   end
 
   def self.check_db(ticker_symbol)
+    ticker_symbol.upcase!
     where(ticker: ticker_symbol).first
   end
 end
+
+ def downcasing
+   self.ticker.upcase!
+ end

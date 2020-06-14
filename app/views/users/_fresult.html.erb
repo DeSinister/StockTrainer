@@ -3,8 +3,8 @@
 </div>
 
 <% if @friends %>
-  <div class="card card-header results-block">
-    <table class="col-md-12 table table-dark tablle-striped table-hover">
+  <div class="card card-header results-block autoblock">
+    <table class="col-md-12 table table-hover">
      <tbody>
        <% @friends.each do |friend| %>
          <tr>
@@ -31,3 +31,4 @@
    </table>
  </div>
 <% end %>
+<br>

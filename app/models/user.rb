@@ -9,11 +9,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def already_stock?(ticker_symbol)
-    stock = Stock.check_db(ticker_symbol)
-    return false unless stock
-    stocks.where(id: stock.id).exists?
-  end
+def already_stock?(ticker_symbol)
+  stock = Stock.check_db(ticker_symbol)
+  return false unless stock
+  stocks.where(id: stock.id).exists?
+ end
 
   def under_stock_limit?
     stocks.count < 10

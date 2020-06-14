@@ -1,7 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap';
 @import "font-awesome";
 .search-area{
-  padding-top: 50px;
+  padding-top:20px;
 }
 .nopad{
   padding-left: 0px;
@@ -12,7 +12,15 @@
 }
 .results-block{
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-bottom: 0px;
+}
+.autoblock{
+  width: 900px;
+}
+.add{
+  width: 160px;
+  text-size: 200;
+  float: right;
 }
 .logout-button{
   margin-right: 5px;
@@ -535,4 +543,59 @@ main{
 
 #services h3 {
     margin-top: 21px;
+}
+.block{
+  height: 200px;
+  width: 60%;
+  margin-top: 0px;
+}
+//-----------------------------------------------------------------------------------------------------/main.carousel-indicators
+  .pad{
+    padding: 20px;
+  }
+  .less{
+    width: 300px !important;
+  }
+.lilless{
+  width: 400px !important;
+}
+
+#black-bg{
+  background: #000000 !important;
+  text-decoration: none;
+  padding: 10px;
+  border: none;
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: white;
+  transition: 0.4s
+}
+#black-bg:hover{
+  background: #ffffff !important;
+  color: #000000;
+  text-decoration: none;
+  border: 2px solid black;
+
+}
+.transpa{
+  background: rgba(0,0,0,0.5);
+  padding-top: 20px;
+  margin: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.white-link{
+  color: white
+}
+.white-link:hover{
+  color: white !important;
+  text-decoration: none;
+}
+.white-link:visited{
+  color: white !important;
+  text-decoration: none !important;
+}
+.white-link:active{
+  color: white !important;
+  text-decoration: none !important;
 }
