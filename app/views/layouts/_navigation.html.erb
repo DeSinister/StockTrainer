@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNavbar">
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
       <%= link_to root_path, class: 'navbar-brand' do %>
         <%= fa_icon "area-chart"%> StockTrainer
@@ -51,10 +52,14 @@
 <%end%>
 
 <script>
-       $(function () {
-           $(document).scroll(function () {
-               var $nav = $("#mainNavbar");
-               $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
-           });
-       });
-   </script>
+  $(document).ready(function() {
+    $(".dropdown-toggle").dropdown();
+});
+
+$(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a:not(".dropdown-toggle")') ) {
+        $(this).collapse('hide');
+    }
+});
+
+</script>
