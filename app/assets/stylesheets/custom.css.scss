@@ -131,7 +131,7 @@
 }
 .vcenter{
   text-align: center;
-  padding: 290px;
+  padding: 300px;
 }
 .v2center{
   text-align: center;
@@ -578,11 +578,12 @@ main{
 
 }
 .transpa{
-  background: rgba(0,0,0,0.5);
-  padding-top: 20px;
+  background: rgba(0,0,0,0.7);
+  padding-top: 40px;
+  width: 440px !important;
   margin: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 10px;
+  padding-right: 100px !important;
 }
 .white-link{
   color: white

@@ -1,8 +1,13 @@
 
+<style>
+  body{
+    background-image: url("https://c.wallhere.com/photos/14/8e/japan_season_cherry_evening_spring_nikon_asia_stream-875102.jpg!d") !important;
 
+  }
+</style>
 <center>
-<div class = "transpa">
-<div class = "row lilless nopad">
+
+<div class = "row lilless nopad transpa">
   <div class = "col-9">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div id = "contact" class = "lilless pad">
@@ -29,7 +34,7 @@
       <% if devise_mapping.rememberable? %>
         <div class="form-group form-check">
           <%= f.check_box :remember_me, class: 'form-check-input' %>
-          <%= f.label :remember_me, class: 'form-check-label' do %>
+          <%= f.label :remember_me, class: 'form-check-label white' do %>
             <%= resource.class.human_attribute_name('remember_me') %>
           <% end %>
         </div>
@@ -41,5 +46,5 @@
     <% end %>
     </div>
 </div>
-</div>
+
 </center>
