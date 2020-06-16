@@ -32,6 +32,10 @@
 .mt{
   margin-top: 2.5%
 }
+.mtc{
+  margin-top: 2.5%;
+  background-color: #3b2f2f;
+}
 .mth{
   margin-top: 100px;
 }
@@ -41,11 +45,18 @@
 .mb{
   margin-bottom: 2.5%
 }
+.mbc{
+  margin-bottom: 2.5%;
+  background-color: #3b2f2f;
+}
 .mr{
   margin-right: 0.75%
 }
 .ml{
   margin-left: 0.75%
+}
+.mlh{
+  height: 700px;
 }
 .center {
   margin-left: auto;
@@ -324,6 +335,7 @@ h2::after {
 .coffee{
   background: #3b2f2f;
   color: white;
+
 }
 .footer {
   height: 100px;
@@ -599,4 +611,17 @@ main{
 .white-link:active{
   color: white !important;
   text-decoration: none !important;
+}
+.chill{
+  background: #2BAE66FF;
+  color: #FCF6F5FF;
+  padding: 40px;
+}
+.pill{
+  background: #FCF6F5FF;
+  color: #2BAE66FF;
+  padding: 40px;
+}
+.long{
+  font-size: 60px;
 }
